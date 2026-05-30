@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "home": "Ikhaya",
+    "findSangoma": "Thola Isangoma",
+    "herbRemedies": "Imuthi Yezimila",
+    "symptomGuide": "Umhlahlandlela Wezimpawu"
+  },
+  "home": {
+    "heritage": "Ukugcina Ifa lase-Afrika",
+    "heroTitle": "Ukuhlakanipha",
+    "heroAccent": "kokhokho bethu,",
+    "heroEnd": "sekunawe.",
+    "heroDesc": "Xhumana nezangoma ezithembekile eNingizimu Afrika uthole imuthi yendabuko edluliselwa izizukulwane ngezizukulwane.",
+    "cta1": "Thola Isangoma",
+    "cta2": "Hlola Imuthi",
+    "stats": {
+      "sangomasListed": "Izangoma ezilisiwe",
+      "herbRecipes": "Izindlela zemuthi",
+      "provincesCovered": "Izifundazwe",
+      "languages": "Izilimi"
+    },
+    "featuresTitle": "Konke endaweni eyodwa",
+    "features": {
+      "findSangoma": { "title": "Thola Isangoma", "desc": "Thola izinyanga zendabuko eseduze nawe, eziqinisekiswe umphakathi." },
+      "herbRemedies": { "title": "Imuthi Yezimila", "desc": "Hlola indawo yokugcina yezindlela zendabuko ongazilungiselela ekhaya." },
+      "symptomGuide": { "title": "Umhlahlandlela Wezimpawu", "desc": "Sitshele lokho ozwayo uthole izincomo zemuthi." }
+    },
+    "ctaTitle": "Awazi ukuqala kuphi?",
+    "ctaDesc": "Sitshele izimpawu zakho umhlahlandlela wethu azisondeze izindlela zendabuko — axhumane nawe nesangoma uma kunesidingo.",
+    "ctaButton": "Zama Umhlahlandlela"
+  },
+  "sangomas": {
+    "title": "Thola Isangoma",
+    "subtitle": "Izinyanga zendabuko ezithembekile eNingizimu Afrika",
+    "searchPlaceholder": "Sesha ngegama noma idolobha...",
+    "specialities": {
+      "all": "Konke",
+      "healingDivination": "Ukuphulukiswa & Ukubhula",
+      "spiritualCleansing": "Ukuhlanzwa Kwomoya",
+      "ancestralCommunication": "Ukuxhumana Nokhokho",
+      "herbalMedicine": "Umuthi Wezimila"
+    },
+    "available": "Uyatholakala",
+    "busy": "Umatasa",
+    "reviews": "izibuyekezo",
+    "yrsExp": "iminyaka yolwazi",
+    "contactButton": "Xhumana Nesangoma",
+    "noResults": "Azitholakalanga izangoma ohamba ngazo."
+  },
+  "recipes": {
+    "title": "Imuthi Yezimila",
+    "subtitle": "Izindlela zendabuko ongazilungiselela ekhaya — ngokunakekela nokuhlonipha.",
+    "searchPlaceholder": "Sesha ngomuthi noma isifo...",
+    "categories": {
+      "all": "Konke",
+      "respiratory": "Ukuphefumula",
+      "urinary": "Isifo Somchamo",
+      "stressSleep": "Ingcindezi & Ukulala",
+      "painRelief": "Ukuphucula Ubuhlungu",
+      "immunity": "Umzimba Omelene Nezifo"
+    },
+    "herbs": "izimila",
+    "for": "Nge:",
+    "ingredients": "Izinto",
+    "preparation": "Ukulungiselela",
+    "tradition": "Isiko:",
+    "warning": "Isexwayiso:"
+  },
+  "recommender": {
+    "title": "Umhlahlandlela Wezimpawu",
+    "description": "Khetha lokho owuzwayo sizosondeza izimila zendabuko ukusiza.",
+    "selectLabel": "Khetha izimpawu zakho",
+    "selected": "okukhethiwe",
+    "button": "Thola Izincomo Zemuthi",
+    "resultLabel": "Isiyalezo",
+    "basedOn": "Ngokuya ku:",
+    "suggestedHerbs": "Izimila ezicelwayo",
+    "howToPrepare": "Indlela yokulungisa",
+    "important": "Kubalulekile:",
+    "disclaimer": "Lezi zindlela zilekelela — azithathi indawo — yosonhlalakahle.",
+    "deeperConsult": "Ukuze ucele ukubonisana okunzulu nezinyanga zendabuko:",
+    "findSangoma": "Thola Isangoma eseduze nawe",
+    "startOver": "Qala kabusha",
+    "guideNote": "Lo mhlahlandlela unolwazi lwemfundo futhi usekelwe ulwazi lwesiko. Hlala ubonisana nomchweli oqeqeshiwe.",
+    "symptoms": {
+      "Headache": "Ukubuhlungu Ikhanda",
+      "Fatigue": "Ukukhathala",
+      "Cold / Flu": "Umkhuhlane",
+      "Cough": "Ukukhwehlela",
+      "Joint Pain": "Ubuhlungu Bezitho",
+      "Anxiety": "Ukukhathazeka",
+      "Insomnia": "Ukungalali",
+      "Digestive Issues": "Izinkinga Zokugaya Ukudla",
+      "Low Immunity": "Umzimba Ongamelani Nezifo",
+      "Stress": "Ingcindezi",
+      "Back Pain": "Ubuhlungu Emhlane",
+      "Chest Congestion": "Ukuvimbeka Kwesifuba",
+      "UTI / Bladder": "Isifo Somchamo",
+      "Skin Issues": "Izinkinga Zesikhumba",
+      "Fever": "Umkhuhlane Wokushisa"
+    }
+  }
+}

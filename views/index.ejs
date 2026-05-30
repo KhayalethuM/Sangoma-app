@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<%- include('_head', { pageTitle: t.nav.home }) %>
+<body class="pattern-bg">
+<%- include('_nav') %>
+
+<main>
+  <!-- Hero -->
+  <section class="relative overflow-hidden" style="background: var(--earth); min-height: 88vh; display: flex; align-items: center;">
+    <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center w-full">
+      <div>
+        <p style="color: var(--gold); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem;">
+          <%= t.home.heritage %>
+        </p>
+        <h1 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 500; color: var(--cream); line-height: 1.1; margin-bottom: 1.5rem;">
+          <%= t.home.heroTitle %><br>
+          <em style="color: var(--gold-light);"><%= t.home.heroAccent %></em><br>
+          <%= t.home.heroEnd %>
+        </h1>
+        <p style="color: var(--cream-dark); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem; max-width: 480px;">
+          <%= t.home.heroDesc %>
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/<%= lang %>/sangomas" style="background: var(--gold); color: var(--earth); padding: 14px 28px; border-radius: 4px; font-weight: 500; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+            <%= t.home.cta1 %> <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i>
+          </a>
+          <a href="/<%= lang %>/recipes" style="border: 1px solid var(--earth-light); color: var(--cream); padding: 14px 28px; border-radius: 4px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+            <%= t.home.cta2 %>
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden md:grid grid-cols-2 gap-4">
+        <%
+        var stats = [
+          { value: '200+', labelKey: 'sangomasListed' },
+          { value: '450+', labelKey: 'herbRecipes' },
+          { value: '9',    labelKey: 'provincesCovered' },
+          { value: '12',   labelKey: 'languages' },
+        ];
+        stats.forEach(function(s) { %>
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(200,146,42,0.3); border-radius: 8px; padding: 28px 24px;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600; color: var(--gold-light); line-height: 1;"><%= s.value %></div>
+          <div style="color: var(--cream-dark); font-size: 0.85rem; margin-top: 8px;"><%= t.home.stats[s.labelKey] %></div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="max-w-6xl mx-auto px-6 py-24">
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; text-align: center; color: var(--earth); margin-bottom: 4rem;">
+      <%= t.home.featuresTitle %>
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <%
+      var features = [
+        { iconName: 'map-pin',  color: 'var(--rust)', key: 'findSangoma',  href: '/' + lang + '/sangomas' },
+        { iconName: 'leaf',     color: 'var(--sage)', key: 'herbRemedies', href: '/' + lang + '/recipes' },
+        { iconName: 'sparkles', color: 'var(--gold)', key: 'symptomGuide', href: '/' + lang + '/recommender' },
+      ];
+      features.forEach(function(f) { %>
+      <a href="<%= f.href %>" style="text-decoration: none;">
+        <div class="card-hover" style="background: white; border: 1px solid var(--cream-dark); border-radius: 12px; padding: 36px 32px; height: 100%;">
+          <div style="width: 48px; height: 48px; border-radius: 8px; background: var(--cream); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <i data-lucide="<%= f.iconName %>" style="width: 24px; height: 24px; color: <%= f.color %>;"></i>
+          </div>
+          <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--earth); margin-bottom: 12px;"><%= t.home.features[f.key].title %></h3>
+          <p style="color: var(--earth-mid); font-size: 0.95rem; line-height: 1.6;"><%= t.home.features[f.key].desc %></p>
+        </div>
+      </a>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: var(--sage); padding: 80px 24px;">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--cream); margin-bottom: 1rem;">
+        <%= t.home.ctaTitle %>
+      </h2>
+      <p style="color: var(--cream-dark); margin-bottom: 2rem; font-size: 1.05rem;">
+        <%= t.home.ctaDesc %>
+      </p>
+      <a href="/<%= lang %>/recommender" style="background: var(--cream); color: var(--earth); padding: 14px 32px; border-radius: 4px; font-weight: 500; text-decoration: none; display: inline-block;">
+        <%= t.home.ctaButton %>
+      </a>
+    </div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+<script src="/js/nav.js"></script>
+</body>
+</html>

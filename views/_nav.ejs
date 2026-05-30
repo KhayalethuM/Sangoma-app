@@ -1,0 +1,51 @@
+<%
+  const navLinks = [
+    { href: '/' + lang,                   label: t.nav.home },
+    { href: '/' + lang + '/sangomas',     label: t.nav.findSangoma },
+    { href: '/' + lang + '/recipes',      label: t.nav.herbRemedies },
+    { href: '/' + lang + '/recommender',  label: t.nav.symptomGuide },
+  ];
+  function isActive(linkHref) {
+    const linkPath = linkHref.replace('/' + lang, '') || '/';
+    return currentPath === linkPath;
+  }
+%>
+<nav class="sticky top-0 z-50" style="background: var(--earth); border-bottom: 1px solid var(--earth-mid);">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+
+    <a href="/<%= lang %>" class="flex items-center gap-2" style="color: var(--gold-light); text-decoration: none;">
+      <i data-lucide="leaf" style="width: 20px; height: 20px;"></i>
+      <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.02em;">Sangoma</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      <% navLinks.forEach(function(link) { %>
+        <a href="<%= link.href %>" style="color: <%= isActive(link.href) ? 'var(--gold-light)' : 'var(--cream-dark)' %>; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: <%= isActive(link.href) ? '1px solid var(--gold)' : 'none' %>; padding-bottom: 2px; text-decoration: none; transition: color 0.2s;">
+          <%= link.label %>
+        </a>
+      <% }); %>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="<%= switchUrl %>" style="font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; background: rgba(200,146,42,0.15); color: var(--gold-light); text-decoration: none; border: 1px solid rgba(200,146,42,0.35); transition: background 0.2s;">
+        <%= lang === 'en' ? 'isiZulu' : 'English' %>
+      </a>
+      <button id="menu-btn" class="md:hidden" onclick="toggleMenu()" style="color: var(--cream); background: none; border: none; cursor: pointer; display: flex; align-items: center;">
+        <i data-lucide="menu" id="icon-menu" style="width: 22px; height: 22px;"></i>
+        <i data-lucide="x"    id="icon-close" style="width: 22px; height: 22px; display: none;"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <div id="mobile-menu" style="display: none; background: var(--earth-mid);" class="px-6 pb-4 flex flex-col gap-4">
+    <% navLinks.forEach(function(link) { %>
+      <a href="<%= link.href %>" onclick="toggleMenu()" style="color: var(--cream-dark); font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; padding: 4px 0;">
+        <%= link.label %>
+      </a>
+    <% }); %>
+    <a href="<%= switchUrl %>" style="font-size: 0.875rem; color: var(--gold-light); text-decoration: none;">
+      <%= lang === 'en' ? '🇿🇦 isiZulu' : '🌐 English' %>
+    </a>
+  </div>
+</nav>

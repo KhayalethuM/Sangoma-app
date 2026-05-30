@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<%- include('_head', { pageTitle: t.recommender.title }) %>
+<body class="pattern-bg">
+<%- include('_nav') %>
+
+<!-- Selector section -->
+<main id="selector-section" class="max-w-3xl mx-auto px-6 py-12">
+  <div style="margin-bottom: 2.5rem;">
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--earth); margin-bottom: 0.5rem;"><%= t.recommender.title %></h1>
+    <p style="color: var(--earth-mid); font-size: 1.05rem;"><%= t.recommender.description %></p>
+  </div>
+
+  <div style="margin-bottom: 2rem;">
+    <p style="font-size: 0.85rem; color: var(--earth-light); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em;">
+      <%= t.recommender.selectLabel %> (<span id="selected-count">0</span> <%= t.recommender.selected %>)
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+      <% Object.keys(t.recommender.symptoms).forEach(function(key) { %>
+      <button class="symptom-btn" data-key="<%= key %>"
+        style="padding: 10px 18px; border-radius: 6px; border: 1px solid var(--cream-dark); cursor: pointer; font-size: 0.9rem; background: white; color: var(--earth-mid); transition: all 0.15s; font-family: inherit;">
+        <%= t.recommender.symptoms[key] %>
+      </button>
+      <% }); %>
+    </div>
+  </div>
+
+  <button id="recommend-btn" onclick="recommend()" disabled
+    style="padding: 14px 32px; border-radius: 6px; font-size: 1rem; font-weight: 500; cursor: not-allowed; display: flex; align-items: center; gap: 8px; border: none; transition: all 0.2s; background: var(--cream-dark); color: var(--earth-light); opacity: 0.6; font-family: inherit;">
+    <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+    <%= t.recommender.button %>
+  </button>
+
+  <p style="margin-top: 16px; font-size: 0.8rem; color: var(--earth-light); line-height: 1.5;">
+    <%= t.recommender.guideNote %>
+  </p>
+</main>
+
+<!-- Result section (populated by JS) -->
+<main id="result-section" style="display: none;" class="max-w-3xl mx-auto px-6 py-12"></main>
+
+<script>
+  window.RECOMMENDATIONS  = <%- JSON.stringify(recommendations) %>;
+  window.SYMPTOM_LABELS   = <%- JSON.stringify(t.recommender.symptoms) %>;
+  window.LANG             = <%- JSON.stringify(lang) %>;
+  window.I18N_RECOMMENDER = <%- JSON.stringify({
+    resultLabel:   t.recommender.resultLabel,
+    basedOn:       t.recommender.basedOn,
+    suggestedHerbs:t.recommender.suggestedHerbs,
+    howToPrepare:  t.recommender.howToPrepare,
+    important:     t.recommender.important,
+    disclaimer:    t.recommender.disclaimer,
+    deeperConsult: t.recommender.deeperConsult,
+    findSangoma:   t.recommender.findSangoma,
+    startOver:     t.recommender.startOver
+  }) %>;
+</script>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+<script src="/js/nav.js"></script>
+<script src="/js/recommender.js"></script>
+</body>
+</html>

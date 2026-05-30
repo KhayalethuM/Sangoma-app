@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<%- include('_head', { pageTitle: t.sangomas.title }) %>
+<body class="pattern-bg">
+<%- include('_nav') %>
+
+<main class="max-w-6xl mx-auto px-6 py-12">
+  <div style="margin-bottom: 3rem;">
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--earth); margin-bottom: 0.5rem;"><%= t.sangomas.title %></h1>
+    <p style="color: var(--earth-mid); font-size: 1.05rem;"><%= t.sangomas.subtitle %></p>
+  </div>
+
+  <!-- Search & Filter -->
+  <div class="flex flex-col md:flex-row gap-4 mb-10">
+    <div class="relative flex-1">
+      <i data-lucide="search" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--earth-light);"></i>
+      <input id="search-input" type="text" placeholder="<%= t.sangomas.searchPlaceholder %>"
+        style="width: 100%; padding: 12px 12px 12px 40px; border: 1px solid var(--cream-dark); border-radius: 6px; background: white; font-size: 0.95rem; color: var(--earth); outline: none; font-family: inherit;" />
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      <%
+      var specialities = [
+        { value: 'All',                       label: t.sangomas.specialities.all },
+        { value: 'Healing & Divination',      label: t.sangomas.specialities.healingDivination },
+        { value: 'Spiritual Cleansing',       label: t.sangomas.specialities.spiritualCleansing },
+        { value: 'Ancestral Communication',   label: t.sangomas.specialities.ancestralCommunication },
+        { value: 'Herbal Medicine',           label: t.sangomas.specialities.herbalMedicine },
+      ];
+      specialities.forEach(function(s, i) { %>
+      <button class="spec-filter" data-value="<%= s.value %>"
+        style="padding: 10px 16px; border-radius: 6px; font-size: 0.85rem; border: 1px solid <%= i === 0 ? 'var(--earth)' : 'var(--cream-dark)' %>; cursor: pointer; background: <%= i === 0 ? 'var(--earth)' : 'white' %>; color: <%= i === 0 ? 'var(--cream)' : 'var(--earth-mid)' %>; transition: all 0.15s; font-family: inherit;">
+        <%= s.label %>
+      </button>
+      <% }); %>
+    </div>
+  </div>
+
+  <!-- Grid (rendered by JS) -->
+  <div id="sangomas-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  <div id="no-results" style="display: none; text-align: center; padding: 60px; color: var(--earth-light);">
+    <%= t.sangomas.noResults %>
+  </div>
+</main>
+
+<script>
+  window.SANGOMAS = <%- JSON.stringify(sangomas) %>;
+  window.I18N_SANGOMAS = <%- JSON.stringify({
+    available:     t.sangomas.available,
+    busy:          t.sangomas.busy,
+    reviews:       t.sangomas.reviews,
+    yrsExp:        t.sangomas.yrsExp,
+    contactButton: t.sangomas.contactButton
+  }) %>;
+</script>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+<script src="/js/nav.js"></script>
+<script src="/js/sangomas.js"></script>
+</body>
+</html>

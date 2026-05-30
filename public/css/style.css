@@ -1,0 +1,34 @@
+:root {
+  --earth:      #2C1810;
+  --earth-mid:  #5C3D2E;
+  --earth-light:#A67C5B;
+  --cream:      #F5EFE6;
+  --cream-dark: #E8DDD0;
+  --sage:       #6B7C5C;
+  --sage-light: #B5C4A1;
+  --gold:       #C8922A;
+  --gold-light: #E8B84B;
+  --rust:       #8B3A2A;
+  --charcoal:   #1A1A18;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+
+.pattern-bg {
+  background-color: var(--cream);
+  background-image: radial-gradient(circle at 1px 1px, var(--earth-light) 1px, transparent 0);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
+.card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }

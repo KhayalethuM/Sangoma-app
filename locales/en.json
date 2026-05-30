@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "home": "Home",
+    "findSangoma": "Find a Sangoma",
+    "herbRemedies": "Herb Remedies",
+    "symptomGuide": "Symptom Guide"
+  },
+  "home": {
+    "heritage": "Preserving African Heritage",
+    "heroTitle": "The wisdom of our",
+    "heroAccent": "ancestors,",
+    "heroEnd": "within reach.",
+    "heroDesc": "Connect with trusted sangomas across South Africa and discover traditional herbal remedies passed down through generations.",
+    "cta1": "Find a Sangoma",
+    "cta2": "Explore Remedies",
+    "stats": {
+      "sangomasListed": "Sangomas listed",
+      "herbRecipes": "Herb recipes",
+      "provincesCovered": "Provinces covered",
+      "languages": "Languages"
+    },
+    "featuresTitle": "Everything in one place",
+    "features": {
+      "findSangoma": { "title": "Find a Sangoma", "desc": "Locate trusted traditional healers near you, verified by the community." },
+      "herbRemedies": { "title": "Herb Remedies", "desc": "Explore a library of traditional recipes you can prepare at home." },
+      "symptomGuide": { "title": "Symptom Guide", "desc": "Describe what you're feeling and receive herb recommendations." }
+    },
+    "ctaTitle": "Not sure where to start?",
+    "ctaDesc": "Tell us your symptoms and our guide will suggest traditional remedies — and connect you with a sangoma if needed.",
+    "ctaButton": "Try the Symptom Guide"
+  },
+  "sangomas": {
+    "title": "Find a Sangoma",
+    "subtitle": "Trusted traditional healers across South Africa",
+    "searchPlaceholder": "Search by name or city...",
+    "specialities": {
+      "all": "All",
+      "healingDivination": "Healing & Divination",
+      "spiritualCleansing": "Spiritual Cleansing",
+      "ancestralCommunication": "Ancestral Communication",
+      "herbalMedicine": "Herbal Medicine"
+    },
+    "available": "Available",
+    "busy": "Busy",
+    "reviews": "reviews",
+    "yrsExp": "yrs exp.",
+    "contactButton": "Contact Sangoma",
+    "noResults": "No sangomas found for your search."
+  },
+  "recipes": {
+    "title": "Herb Remedies",
+    "subtitle": "Traditional recipes you can prepare at home — with care and respect.",
+    "searchPlaceholder": "Search by remedy or ailment...",
+    "categories": {
+      "all": "All",
+      "respiratory": "Respiratory",
+      "urinary": "Urinary",
+      "stressSleep": "Stress & Sleep",
+      "painRelief": "Pain Relief",
+      "immunity": "Immunity"
+    },
+    "herbs": "herbs",
+    "for": "For:",
+    "ingredients": "Ingredients",
+    "preparation": "Preparation",
+    "tradition": "Tradition:",
+    "warning": "Warning:"
+  },
+  "recommender": {
+    "title": "Symptom Guide",
+    "description": "Select what you are experiencing and we will suggest traditional herbs to help.",
+    "selectLabel": "Select your symptoms",
+    "selected": "selected",
+    "button": "Get Herb Recommendations",
+    "resultLabel": "Recommendation",
+    "basedOn": "Based on:",
+    "suggestedHerbs": "Suggested herbs",
+    "howToPrepare": "How to prepare",
+    "important": "Important:",
+    "disclaimer": "These remedies complement — they do not replace — professional care.",
+    "deeperConsult": "For a deeper consultation with a traditional healer:",
+    "findSangoma": "Find a Sangoma near you",
+    "startOver": "Start over",
+    "guideNote": "This guide is educational and based on traditional knowledge. Always consult a qualified practitioner.",
+    "symptoms": {
+      "Headache": "Headache",
+      "Fatigue": "Fatigue",
+      "Cold / Flu": "Cold / Flu",
+      "Cough": "Cough",
+      "Joint Pain": "Joint Pain",
+      "Anxiety": "Anxiety",
+      "Insomnia": "Insomnia",
+      "Digestive Issues": "Digestive Issues",
+      "Low Immunity": "Low Immunity",
+      "Stress": "Stress",
+      "Back Pain": "Back Pain",
+      "Chest Congestion": "Chest Congestion",
+      "UTI / Bladder": "UTI / Bladder",
+      "Skin Issues": "Skin Issues",
+      "Fever": "Fever"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<%- include('_head', { pageTitle: t.recipes.title }) %>
+<body class="pattern-bg">
+<%- include('_nav') %>
+
+<main class="max-w-5xl mx-auto px-6 py-12">
+  <div style="margin-bottom: 3rem;">
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--earth); margin-bottom: 0.5rem;"><%= t.recipes.title %></h1>
+    <p style="color: var(--earth-mid); font-size: 1.05rem;"><%= t.recipes.subtitle %></p>
+  </div>
+
+  <!-- Search & Filter -->
+  <div class="flex flex-col md:flex-row gap-4 mb-10">
+    <div class="relative flex-1">
+      <i data-lucide="search" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--earth-light);"></i>
+      <input id="search-input" type="text" placeholder="<%= t.recipes.searchPlaceholder %>"
+        style="width: 100%; padding: 12px 12px 12px 40px; border: 1px solid var(--cream-dark); border-radius: 6px; background: white; font-size: 0.95rem; color: var(--earth); outline: none; font-family: inherit;" />
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      <%
+      var categories = [
+        { value: 'All',           label: t.recipes.categories.all },
+        { value: 'Respiratory',   label: t.recipes.categories.respiratory },
+        { value: 'Urinary',       label: t.recipes.categories.urinary },
+        { value: 'Stress & Sleep',label: t.recipes.categories.stressSleep },
+        { value: 'Pain Relief',   label: t.recipes.categories.painRelief },
+        { value: 'Immunity',      label: t.recipes.categories.immunity },
+      ];
+      categories.forEach(function(c, i) { %>
+      <button class="cat-filter" data-value="<%= c.value %>"
+        style="padding: 10px 16px; border-radius: 6px; font-size: 0.85rem; border: 1px solid; cursor: pointer; transition: all 0.15s; font-family: inherit;
+          background: <%= i === 0 ? 'var(--sage)' : 'white' %>;
+          border-color: <%= i === 0 ? 'var(--sage)' : 'var(--cream-dark)' %>;
+          color: <%= i === 0 ? 'white' : 'var(--earth-mid)' %>;">
+        <%= c.label %>
+      </button>
+      <% }); %>
+    </div>
+  </div>
+
+  <!-- Recipe cards -->
+  <div class="flex flex-col gap-4">
+    <% recipes.forEach(function(r) { %>
+    <div class="recipe-card" data-category="<%= r.category %>" data-name="<%= r.name.toLowerCase() %>" data-ailments="<%= r.ailments.join(',').toLowerCase() %>"
+      style="background: white; border: 1px solid var(--cream-dark); border-radius: 12px; overflow: hidden;">
+
+      <button onclick="toggleRecipe(<%= r.id %>)"
+        style="width: 100%; padding: 20px 24px; display: flex; align-items: center; gap: 16px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit;">
+        <div style="flex: 1;">
+          <div class="flex items-center gap-3 mb-1">
+            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--earth);"><%= r.name %></h3>
+            <span style="font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; background: var(--cream); color: var(--sage); font-weight: 500; white-space: nowrap;"><%= r.category %></span>
+          </div>
+          <div class="flex flex-wrap gap-4" style="color: var(--earth-light); font-size: 0.85rem;">
+            <span class="flex items-center gap-1"><i data-lucide="clock" style="width: 13px; height: 13px;"></i><%= r.time %></span>
+            <span class="flex items-center gap-1"><i data-lucide="leaf" style="width: 13px; height: 13px;"></i><%= r.herbs.length %> <%= t.recipes.herbs %></span>
+            <span style="color: var(--earth-mid);"><%= t.recipes.for %> <%= r.ailments.join(', ') %></span>
+          </div>
+        </div>
+        <i data-lucide="chevron-down" id="chevron-<%= r.id %>" style="width: 18px; height: 18px; color: var(--earth-light); flex-shrink: 0; transition: transform 0.2s;"></i>
+      </button>
+
+      <div id="recipe-body-<%= r.id %>" style="display: none; border-top: 1px solid var(--cream-dark); padding: 24px;">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--earth); margin-bottom: 10px;"><%= t.recipes.ingredients %></h4>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px;">
+              <% r.herbs.forEach(function(h) { %>
+              <li style="display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: var(--earth-mid);">
+                <i data-lucide="leaf" style="width: 12px; height: 12px; color: var(--sage); flex-shrink: 0;"></i><%= h %>
+              </li>
+              <% }); %>
+            </ul>
+            <div style="margin-top: 16px; font-size: 0.8rem; color: var(--earth-light);">
+              <%= t.recipes.tradition %> <strong style="color: var(--earth-mid);"><%= r.tradition %></strong>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--earth); margin-bottom: 10px;"><%= t.recipes.preparation %></h4>
+            <ol style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+              <% r.steps.forEach(function(step, i) { %>
+              <li style="font-size: 0.9rem; color: var(--earth-mid); line-height: 1.5;">
+                <span style="font-weight: 500; color: var(--earth); margin-right: 6px;"><%= i + 1 %>.</span><%= step %>
+              </li>
+              <% }); %>
+            </ol>
+          </div>
+        </div>
+        <div style="margin-top: 20px; padding: 12px 16px; background: #FFF8E1; border-radius: 6px; display: flex; gap: 10px; align-items: flex-start;">
+          <i data-lucide="alert-circle" style="width: 16px; height: 16px; color: #F57F17; flex-shrink: 0; margin-top: 1px;"></i>
+          <p style="font-size: 0.85rem; color: #5D4037; line-height: 1.5;"><strong><%= t.recipes.warning %></strong> <%= r.warning %></p>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+
+  <div id="no-results" style="display: none; text-align: center; padding: 60px; color: var(--earth-light);">
+    No recipes found.
+  </div>
+</main>
+
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+<script src="/js/nav.js"></script>
+<script src="/js/recipes.js"></script>
+</body>
+</html>
