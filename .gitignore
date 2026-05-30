@@ -35,6 +35,8 @@ yarn-error.log*
 
 # SQLite (legacy — replaced by Firebase)
 *.db
+*.db-shm
+*.db-wal
 
 # vercel
 .vercel
