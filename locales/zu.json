@@ -3,7 +3,31 @@
     "home": "Ikhaya",
     "findSangoma": "Thola Isangoma",
     "herbRemedies": "Imuthi Yezimila",
-    "symptomGuide": "Umhlahlandlela Wezimpawu"
+    "symptomGuide": "Umhlahlandlela Wezimpawu",
+    "register": "Bhalisa Umsebenzi Wakho"
+  },
+  "register": {
+    "badge": "Joyina Umphakathi Wethu",
+    "title": "Bhalisa Njengosangoma",
+    "subtitle": "Joyina uhlu lwethu lwezinyanga zesikhathi esidlule ezithembekile. Iphrofayili yakho izohlolwa ngaphambi kokushicilelwa.",
+    "name": "Igama Eligcwele",
+    "location": "Indawo (Idolobha, Isifundazwe)",
+    "speciality": "Ubuchwepheshe",
+    "selectSpeciality": "Khetha ubuchwepheshe",
+    "languages": "Izilimi Ezikhulunywayo",
+    "phone": "Inombolo Yocingo",
+    "email": "Ikheli Le-imeyili",
+    "emailNote": "Akubonakaliswa esidlangalaleni — ukuqinisekisa kuphela.",
+    "years": "Iminyaka Yokusebenza",
+    "bio": "Mayelana Nawe (isinketho)",
+    "bioPlaceholder": "Tshela abantu ngomsebenzi wakho, ukuqeqeshwa, nefilosofi yokuphulukisa…",
+    "reviewNotice": "Izicelo zihlolwa phakathi kwezinsuku ezingu-3–5 zomsebenzi. Buyela lapha ukuze ubone ukuthi iphrofayili yakho isebenza.",
+    "submit": "Thumela Isicelo",
+    "successTitle": "Isicelo Samukelwe!",
+    "successMessage": "Siyabonga ngokubhalisa. Sizohlola isicelo sakho bese sikungeza kohlu lwethu maduze.",
+    "pendingNote": "Iphrofayili yakho izobonakala uma iqinisekisiwe yithimba lethu.",
+    "backHome": "Buyela Ekhaya",
+    "browseSangomas": "Bheka Izangoma"
   },
   "home": {
     "heritage": "Ukugcina Ifa lase-Afrika",

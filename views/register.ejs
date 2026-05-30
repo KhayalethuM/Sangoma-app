@@ -1,0 +1,171 @@
+<%- include('_head', { pageTitle: t.register.title }) %>
+<body class="pattern-bg min-h-screen">
+  <%- include('_nav') %>
+
+  <main class="max-w-2xl mx-auto px-4 py-12">
+
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest mb-4"
+           style="color:var(--gold);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <%= t.register.badge %>
+      </div>
+      <h1 class="text-4xl font-medium mb-3" style="font-family:'Cormorant Garamond',serif;color:var(--earth);">
+        <%= t.register.title %>
+      </h1>
+      <p style="color:var(--earth-light);" class="text-base leading-relaxed">
+        <%= t.register.subtitle %>
+      </p>
+    </div>
+
+    <!-- Errors -->
+    <% if (errors.length) { %>
+    <div class="rounded-lg p-4 mb-6" style="background:#FBE9E7;border:1px solid #FFCCBC;">
+      <p class="font-medium mb-2" style="color:#BF360C;">Please fix the following:</p>
+      <ul class="list-disc list-inside space-y-1" style="color:#BF360C;">
+        <% errors.forEach(function(e) { %><li class="text-sm"><%= e %></li><% }); %>
+      </ul>
+    </div>
+    <% } %>
+
+    <!-- Form -->
+    <form method="POST" action="/<%= lang %>/register" class="space-y-6"
+          style="background:white;border:1px solid var(--cream-dark);border-radius:16px;padding:40px;">
+
+      <!-- Name -->
+      <div>
+        <label class="block text-sm font-medium mb-1" style="color:var(--earth);">
+          <%= t.register.name %> <span style="color:var(--rust);">*</span>
+        </label>
+        <input type="text" name="name" required
+               value="<%= values.name || '' %>"
+               placeholder="e.g. Gogo Nomvula Dlamini"
+               class="w-full px-4 py-3 rounded-lg border text-sm outline-none transition"
+               style="border-color:var(--cream-dark);color:var(--charcoal);"
+               onfocus="this.style.borderColor='var(--earth)'" onblur="this.style.borderColor='var(--cream-dark)'">
+      </div>
+
+      <!-- Location -->
+      <div>
+        <label class="block text-sm font-medium mb-1" style="color:var(--earth);">
+          <%= t.register.location %> <span style="color:var(--rust);">*</span>
+        </label>
+        <input type="text" name="location" required
+               value="<%= values.location || '' %>"
+               placeholder="e.g. Soweto, Gauteng"
+               class="w-full px-4 py-3 rounded-lg border text-sm outline-none transition"
+               style="border-color:var(--cream-dark);color:var(--charcoal);"
+               onfocus="this.style.borderColor='var(--earth)'" onblur="this.style.borderColor='var(--cream-dark)'">
+      </div>
+
+      <!-- Speciality -->
+      <div>
+        <label class="block text-sm font-medium mb-1" style="color:var(--earth);">
+          <%= t.register.speciality %> <span style="color:var(--rust);">*</span>
+        </label>
+        <select name="speciality" required
+                class="w-full px-4 py-3 rounded-lg border text-sm outline-none transition"
+                style="border-color:var(--cream-dark);color:var(--charcoal);background:white;"
+                onfocus="this.style.borderColor='var(--earth)'" onblur="this.style.borderColor='var(--cream-dark)'">
+          <option value="">— <%= t.register.selectSpeciality %> —</option>
+          <% specialities.forEach(function(s) { %>
+          <option value="<%= s %>" <%= (values.speciality === s) ? 'selected' : '' %>><%= s %></option>
+          <% }); %>
+        </select>
+      </div>
+
+      <!-- Languages -->
+      <div>
+        <label class="block text-sm font-medium mb-2" style="color:var(--earth);">
+          <%= t.register.languages %> <span style="color:var(--rust);">*</span>
+        </label>
+        <div class="flex flex-wrap gap-2">
+          <% var selectedLangs = [].concat(values.languages || []); %>
+          <% languagesList.forEach(function(l) { %>
+          <label class="flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer text-sm transition"
+                 style="border-color:var(--cream-dark);color:var(--earth-mid);">
+            <input type="checkbox" name="languages" value="<%= l %>"
+                   class="accent-[var(--earth)]"
+                   <%= selectedLangs.indexOf(l) !== -1 ? 'checked' : '' %>>
+            <%= l %>
+          </label>
+          <% }); %>
+        </div>
+      </div>
+
+      <!-- Phone + Years (2-col) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" style="color:var(--earth);">
+            <%= t.register.phone %> <span style="color:var(--rust);">*</span>
+          </label>
+          <input type="tel" name="phone" required
+                 value="<%= values.phone || '' %>"
+                 placeholder="+27 82 000 0000"
+                 class="w-full px-4 py-3 rounded-lg border text-sm outline-none transition"
+                 style="border-color:var(--cream-dark);color:var(--charcoal);"
+                 onfocus="this.style.borderColor='var(--earth)'" onblur="this.style.borderColor='var(--cream-dark)'">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" style="color:var(--earth);">
+            <%= t.register.years %> <span style="color:var(--rust);">*</span>
+          </label>
+          <input type="number" name="years" min="1" max="80" required
+                 value="<%= values.years || '' %>"
+                 placeholder="e.g. 15"
+                 class="w-full px-4 py-3 rounded-lg border text-sm outline-none transition"
+                 style="border-color:var(--cream-dark);color:var(--charcoal);"
+                 onfocus="this.style.borderColor='var(--earth)'" onblur="this.style.borderColor='var(--cream-dark)'">
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-medium mb-1" style="color:var(--earth);">
+          <%= t.register.email %> <span style="color:var(--rust);">*</span>
+        </label>
+        <input type="email" name="email" required
+               value="<%= values.email || '' %>"
+               placeholder="you@example.com"
+               class="w-full px-4 py-3 rounded-lg border text-sm outline-none transition"
+               style="border-color:var(--cream-dark);color:var(--charcoal);"
+               onfocus="this.style.borderColor='var(--earth)'" onblur="this.style.borderColor='var(--cream-dark)'">
+        <p class="text-xs mt-1" style="color:var(--earth-light);"><%= t.register.emailNote %></p>
+      </div>
+
+      <!-- Bio -->
+      <div>
+        <label class="block text-sm font-medium mb-1" style="color:var(--earth);">
+          <%= t.register.bio %>
+        </label>
+        <textarea name="bio" rows="4" maxlength="1000"
+                  placeholder="<%= t.register.bioPlaceholder %>"
+                  class="w-full px-4 py-3 rounded-lg border text-sm outline-none transition resize-none"
+                  style="border-color:var(--cream-dark);color:var(--charcoal);"
+                  onfocus="this.style.borderColor='var(--earth)'" onblur="this.style.borderColor='var(--cream-dark)'"
+        ><%= values.bio || '' %></textarea>
+      </div>
+
+      <!-- Notice -->
+      <div class="rounded-lg px-4 py-3 text-sm" style="background:var(--cream);color:var(--earth-mid);">
+        <%= t.register.reviewNotice %>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit"
+              class="w-full py-3 rounded-lg font-medium text-base transition"
+              style="background:var(--earth);color:var(--cream);border:none;cursor:pointer;">
+        <%= t.register.submit %>
+      </button>
+
+    </form>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="/js/nav.js"></script>
+</body>

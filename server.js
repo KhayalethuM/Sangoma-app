@@ -1,12 +1,15 @@
 'use strict';
 
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const path = require('path');
+require('dotenv').config();
 
-const sangomas = require('./data/sangomas');
-const recipes = require('./data/recipes');
+const express      = require('express');
+const cookieParser = require('cookie-parser');
+const path         = require('path');
+
+const db              = require('./db/index');
+const recipes         = require('./data/recipes');
 const recommendations = require('./data/recommendations');
+const registerRouter  = require('./routes/register');
 
 const LOCALES = ['en', 'zu'];
 const DEFAULT_LOCALE = 'en';
@@ -17,6 +20,7 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 function loadLocale(lang) {
@@ -44,12 +48,31 @@ localeRouter.use((req, res, next) => {
 });
 
 localeRouter.get('/', (req, res) => res.render('index'));
-localeRouter.get('/sangomas', (req, res) => res.render('sangomas', { sangomas }));
+localeRouter.get('/sangomas', async (req, res) => {
+  try {
+    const snap = await db.collection('sangomas')
+      .where('status', '==', 'approved')
+      .orderBy('rating', 'desc')
+      .get();
+    const sangomas = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    res.render('sangomas', { sangomas });
+  } catch (err) {
+    console.error('Firestore error:', err);
+    res.status(500).send('Unable to load sangomas.');
+  }
+});
 localeRouter.get('/recipes', (req, res) => res.render('recipes', { recipes }));
 localeRouter.get('/recommender', (req, res) => res.render('recommender', { recommendations }));
+localeRouter.use(registerRouter);
 
 app.use('/:lang', localeRouter);
 
-app.listen(PORT, () => {
-  console.log(`Sangoma app running at http://localhost:${PORT}`);
-});
+// Export for Vercel serverless; also listen directly when run with `node server.js`
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Sangoma app running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
+

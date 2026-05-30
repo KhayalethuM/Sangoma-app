@@ -3,7 +3,31 @@
     "home": "Home",
     "findSangoma": "Find a Sangoma",
     "herbRemedies": "Herb Remedies",
-    "symptomGuide": "Symptom Guide"
+    "symptomGuide": "Symptom Guide",
+    "register": "List Your Practice"
+  },
+  "register": {
+    "badge": "Join Our Community",
+    "title": "Register as a Sangoma",
+    "subtitle": "Join our directory of trusted traditional healers. Your profile will be reviewed before going live.",
+    "name": "Full Name",
+    "location": "Location (City, Province)",
+    "speciality": "Speciality",
+    "selectSpeciality": "Select a speciality",
+    "languages": "Languages Spoken",
+    "phone": "Phone Number",
+    "email": "Email Address",
+    "emailNote": "Not shown publicly — for verification only.",
+    "years": "Years of Experience",
+    "bio": "About You (optional)",
+    "bioPlaceholder": "Tell people about your practice, training, and healing philosophy…",
+    "reviewNotice": "Applications are reviewed within 3–5 business days. You'll receive no email — check back to see if your profile is live.",
+    "submit": "Submit Application",
+    "successTitle": "Application Received!",
+    "successMessage": "Thank you for registering. We will review your application and add you to our directory shortly.",
+    "pendingNote": "Your profile will appear once approved by our team.",
+    "backHome": "Back to Home",
+    "browseSangomas": "Browse Sangomas"
   },
   "home": {
     "heritage": "Preserving African Heritage",
